@@ -7,7 +7,7 @@ def get_citations_needed_coun(url):
     page = requests.get(url)
     soup = BeautifulSoup(page.content,'html.parser')
     citations_num=soup.find_all('a',title='Wikipedia:Citation needed')
-    result=print(f'Number of citations needed in {url.split("/")[-1]} webpage are  {len(citations_num)}')
+    result=(f'Number of citations needed in {url.split("/")[-1]} webpage are  {len(citations_num)}')
 
     return result
 
@@ -37,6 +37,8 @@ def get_citations_needed_report(url):
         file_content = json.dumps(citations)
         with open('citations.json', 'w') as file:
             file.write(file_content)
+
+        return citations    
     
   
     
@@ -46,8 +48,8 @@ def get_citations_needed_report(url):
 
 
 if __name__ == '__main__':
-    print(get_citations_needed_report('https://en.wikipedia.org/wiki/Latvia'))
-    get_citations_needed_coun('https://en.wikipedia.org/wiki/Latvia')
+    # print(get_citations_needed_report('https://en.wikipedia.org/wiki/History_of_Mexico'))
+    print(get_citations_needed_coun('https://en.wikipedia.org/wiki/History_of_Mexico'))
 
 
 
